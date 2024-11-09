@@ -1,0 +1,40 @@
+{
+  "id": "vipoooool/new-plant-diseases-dataset",
+  "id_no": 78313,
+  "datasetSlugNullable": "new-plant-diseases-dataset",
+  "ownerUserNullable": "vipoooool",
+  "usabilityRatingNullable": 0.75,
+  "titleNullable": "New Plant Diseases Dataset",
+  "subtitleNullable": "Image dataset  containing different healthy and unhealthy crop leaves.",
+  "descriptionNullable": "**This dataset is recreated using offline augmentation from the original dataset. The original dataset can be found on [this][1] github repo. This dataset consists of about 87K rgb images of healthy and diseased crop leaves which is categorized into 38 different classes. The total dataset is divided into 80/20 ratio of training and validation set preserving the directory structure.\nA new directory containing 33 test images is created later for prediction purpose.**\n\n\n  [1]: https://github.com/spMohanty/PlantVillage-Dataset",
+  "datasetId": 78313,
+  "datasetSlug": "new-plant-diseases-dataset",
+  "hasDatasetSlug": true,
+  "ownerUser": "vipoooool",
+  "hasOwnerUser": true,
+  "usabilityRating": 0.75,
+  "hasUsabilityRating": true,
+  "totalViews": 637069,
+  "totalVotes": 1209,
+  "totalDownloads": 96947,
+  "title": "New Plant Diseases Dataset",
+  "hasTitle": true,
+  "subtitle": "Image dataset  containing different healthy and unhealthy crop leaves.",
+  "hasSubtitle": true,
+  "description": "**This dataset is recreated using offline augmentation from the original dataset. The original dataset can be found on [this][1] github repo. This dataset consists of about 87K rgb images of healthy and diseased crop leaves which is categorized into 38 different classes. The total dataset is divided into 80/20 ratio of training and validation set preserving the directory structure.\nA new directory containing 33 test images is created later for prediction purpose.**\n\n\n  [1]: https://github.com/spMohanty/PlantVillage-Dataset",
+  "hasDescription": true,
+  "isPrivate": false,
+  "keywords": [
+    "biology",
+    "image"
+  ],
+  "licenses": [
+    {
+      "nameNullable": "copyright-authors",
+      "name": "copyright-authors",
+      "hasName": true
+    }
+  ],
+  "collaborators": [],
+  "data": []
+}
