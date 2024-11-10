@@ -3,11 +3,10 @@ import streamlit as st
 import torch
 import torch.nn as nn
 from torchvision import datasets, transforms, models
-
+import base64
 
 train_dir = r'D:\GUVI\CODE\Plant_Diseases_Detection\New Plant Diseases Dataset(Augmented)\New Plant Diseases Dataset(Augmented)\train'
 valid_dir = r'D:\GUVI\CODE\Plant_Diseases_Detection\New Plant Diseases Dataset(Augmented)\New Plant Diseases Dataset(Augmented)\valid'
-
 
 train_transforms = transforms.Compose([
     transforms.Resize((64, 64)),                
@@ -48,7 +47,6 @@ model.fc = nn.Linear(model.fc.in_features, num_classes)
 model.load_state_dict(torch.load(r"D:\GUVI\CODE\Plant_Diseases_Detection\best_model.pth", map_location=torch.device('cpu')))
 model.eval() 
 
-
 transform = transforms.Compose([
     transforms.Resize((64, 64)),
     transforms.ToTensor(),
@@ -57,9 +55,32 @@ transform = transforms.Compose([
 
 class_names = train_dataset.classes
 
-
 st.title("Plant Disease Detection")
 st.write("Upload a plant leaf image to detect disease")
+
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+image_path = "D:/GUVI/CODE/Plant_Diseases_Detection/Assets/Plant-disease-classifier-with-ai-blog-banner.jpg"
+bg_image_base64 = get_base64_of_bin_file(image_path)
+
+
+page_bg_img = f"""
+<style>
+.stApp {{
+    background-image: url("data:image/jpeg;base64,{bg_image_base64}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.7);
+}}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
@@ -67,8 +88,6 @@ if uploaded_file is not None:
     
     image = Image.open(uploaded_file).convert("RGB")
     st.image(image, caption="Uploaded Image", width=300)
-
-    
     image_tensor = transform(image).unsqueeze(0) 
 
     with torch.no_grad():
@@ -77,11 +96,10 @@ if uploaded_file is not None:
         predicted_class_name = class_names[predicted_idx.item()]
 
     
-
     # prediction_cleaned = predicted_class_name.split("___")[-1]
 
 
     # formatted_prediction = prediction_cleaned.replace("_", " ") + " disease"
 
-    print("Prediction:", predicted_class_name)
+    # print("Prediction:", predicted_class_name)
     st.write(f"Prediction: **{predicted_class_name}**")
